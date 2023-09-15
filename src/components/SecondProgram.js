@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import * as ReactDOM from 'react-dom/client'
-import { Map, Marker, Tooltip } from 'react-canvas-map'
-import  { Coords } from 'react-canvas-map'
+import { Map, Marker, Tooltip } from 'react-canvas-map-pom'
+import  { Coords } from 'react-canvas-map-pom'
 //import  '../../node_modules/react-canvas-map/dist/'
 
 
@@ -11,14 +11,46 @@ const SecondProgram = () => {
     image.src = '../static/marker-blue.svg'
     return image
   })
+  // title:string
+  // color:string
+  // description:string
+  // numberDisplay:number
+  // fontSize:number
+  // fontFamily:string
+  // offsetX:number
+  // offsetY:number
   const [markers] = useState([
     {
       key: 'marker-1',
+      title:'(1)',
+      description:'Boiler 001',
+      fontSize:100,
+      fontFamily:'sans-serif',
+      offsetX:80,
+      offsetY:80,
+      
       coords: {x: 100, y: 200},
     },
     {
       key: 'marker-2',
-      coords: {x: 200, y: 500},
+      title:'(2)',
+      description:'Boiler 002',
+      fontSize:100,
+      fontFamily:'sans-serif',
+
+      offsetX:80,
+      offsetY:80,
+      coords: {x: 200, y: 800},
+    },
+    {
+      key: 'marker-3',
+      title:'(3)',
+      description:'Boiler 003',
+      fontSize:100,
+      fontFamily:'sans-serif',
+      offsetX:80,
+      offsetY:80,
+      coords: {x: 1000, y: 1000},
     },
   ])
   const [activeMarker, setActiveMarker] = useState(null)
@@ -41,6 +73,16 @@ const SecondProgram = () => {
                   markerKey={marker.key}
                   coords={marker.coords}
                   image={markerImage}
+                  title={marker.title}
+                  offsetX={marker.offsetX}
+                  offsetY={marker.offsetY}
+                  description={marker.description}
+
+                  fontSize={marker.fontSize}
+
+                  fontFamily={marker.fontFamily}
+
+
                   onClick={() => {
                     setActiveMarker(marker.key)
                   }}
